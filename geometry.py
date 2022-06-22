@@ -1,8 +1,7 @@
 
-from manimlib import *
-#from manimlib.mobject.geometry import Circle
+from manim import *
 
-import parser
+import family_parser
 
 
 class Geometry(Scene):

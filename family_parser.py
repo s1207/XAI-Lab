@@ -28,14 +28,9 @@ def find_relations(circles_array, dframe):
                           relations[relations['relation'] == 'parent']['Name2'].tolist()}
     return None
 
-
-circle_array = parse_csv('small family tree.csv', df)
-find_relations(circle_array, df)
-print(circle_array[1].children[1].name)
-
 def initialize_circles(circles_array):
     initial_circle = Circle(2.5)
     return None
 
 
-initialize_circles(circle_array)
+#initialize_circles(circle_array)
