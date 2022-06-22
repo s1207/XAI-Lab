@@ -7,9 +7,6 @@ import pandas as pd
 import os
 from manimlib import *
 
-os.chdir('data')
-df = pd.DataFrame(pd.read_csv('small_family_tree.csv'))
-
 
 def parse_csv(filename, dframe):
     temp = pd.concat([dframe['Name1'], dframe['Name2']]).unique()
@@ -19,18 +16,22 @@ def parse_csv(filename, dframe):
     return test_array
 
 
-def find_relations(circles_array, df):
+def find_relations(circles_array, dframe):
     for member in circles_array:
-        #member.relations = defaultdict(list)
-        relations = df[df['Name1'] == member.name]
-        print(relations.shape)
-        member.children = [x for x in circles_array if (x.name == df['relation' == 'child'] and x.name == df['Name2'])]
-
+        relations = dframe[dframe['Name1'] == member.name]
+        #print(relations)
+        member.children = {x for x in circles_array if x.name in
+                           relations[relations['relation'] == 'child']['Name2'].tolist()}
+        member.spouses = {x for x in circles_array if x.name in
+                          relations[relations['relation'] == 'spouse']['Name2'].tolist()}
+        member.parents = {x for x in circles_array if x.name in
+                          relations[relations['relation'] == 'parent']['Name2'].tolist()}
     return None
 
 
 circle_array = parse_csv('small family tree.csv', df)
 find_relations(circle_array, df)
+print(circle_array[1].children[1].name)
 
 def initialize_circles(circles_array):
     initial_circle = Circle(2.5)
