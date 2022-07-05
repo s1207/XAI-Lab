@@ -28,9 +28,9 @@ def find_relations(circles_array, dframe):
                           relations[relations['relation'] == 'parent']['Name2'].tolist()}
     return None
 
-def initialize_circles(circles_array):
+def adjust_circles(circles_array):
     initial_circle = Circle(2.5)
     return None
 
 
-#initialize_circles(circle_array)
+# initialize_circles(circle_array)
