@@ -53,6 +53,6 @@ def adjust_circles_for_children(person):
     c_y = person.yCoordinate
     for child in person.children:
         child.xCoordinate = c_x + list(person.spouses)[0].xCoordinate if len(list(person.spouses)) > 0 else child.xCoordinate
-        child.yCoordinate = c_y
+        child.yCoordinate = c_y + 1
         child.radius = person.radius / 2
     return c_x, c_y
