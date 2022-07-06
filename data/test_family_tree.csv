@@ -1,0 +1,17 @@
+Name1,relation,Name2
+David,spouse,Sarah
+Leo,child,Danny
+Leo,child,Sally
+Danny,spouse,Sally
+Rima,spouse,John
+Sarah,spouse,David
+Sally,spouse,Danny
+John,spouse,Rima
+Sally,child,Sarah
+John,child,Sarah
+Sally,child,David
+John,child,David
+Lea,child,John
+Salma,child,John
+Lea,child,Rima
+Salma,child,Rima

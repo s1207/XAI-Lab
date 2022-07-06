@@ -14,18 +14,18 @@ if __name__ == '__main__':
     df = pd.DataFrame(pd.read_csv('test_family_tree.csv'))
     circle_array = family_parser.parse_csv('test family tree.csv', df)
     family_parser.find_relations(circle_array, df)
-    for member in circle_array[1].children:
-        print(member.name)
+    family_parser.initialize_circles(circle_array)
+    for person in circle_array:
+        family_parser.adjust_circles_for_spouses(person)
+        family_parser.adjust_circles_for_children(person)
 
     # print(circle_array[1].children[1].name)
     circles_list = []
-    c_x = 1
-    c_y = 1
     for person in circle_array:
-        circle = plt.Circle((c_x, c_y), 0.5, color='b', fill=False)
+        circle = plt.Circle((person.xCoordinate, person.yCoordinate), person.radius, color='b', fill=False)
         circles_list.append(circle)
-        c_x += 1
-        c_y += 1
+        person.xCoordinate += 2 * person.radius
+        # c_y += 1
 
     fig, ax = plt.subplots()
     ax = plt.gca()
