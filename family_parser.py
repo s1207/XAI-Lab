@@ -56,3 +56,15 @@ def adjust_circles_for_children(person):
         child.yCoordinate = c_y + 1
         child.radius = person.radius / 2
     return c_x, c_y
+
+
+def adjust_circles_explicit(person):
+    c_x = person.xCoordinate
+    c_y = person.yCoordinate
+    for spouse in person.spouses:
+        if spouse.parents[1] != person.parents[1]:
+            spouse.xCoordinate = c_x + person.radius
+            spouse.yCoordinate = c_y
+
+    return c_x, c_y
+
